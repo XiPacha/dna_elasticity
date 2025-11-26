@@ -126,4 +126,4 @@ class axis:
             angle = np.arccos(np.dot(z1, z2)/(np.linalg.norm(z1)*np.linalg.norm(z2)))
             angle = np.rad2deg(angle)
             self.angle.append(angle)
-        pd.DataFrame(self.angle).to_csv("bending_angle.dat", sep="\t", header=None)
+        pd.DataFrame(self.angle).to_csv("bending_angle_%s.dat"%(str(b2)), sep="\t", header=None)

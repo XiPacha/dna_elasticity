@@ -38,7 +38,7 @@ def bending_persistence(start_bp, stop_bp, trajectory, topology):
           L=write_rise(start_bp, end)
           lengs.append(L)
           write_bending(start_bp, end, trajectory, topology)
-          B=read_bending(start_bp, end)
+          B=read_bending(end)
           bends.append(B)
           end+=2
     popt,pcov = curve_fit(func,lengs,bends)
@@ -59,7 +59,7 @@ def write_bending(start_bp, end, trajectory, topology):
 
 
 
-def read_bending(start_bp,end):
+def read_bending(end):
     df = pd.read_table("bending_angle_%s.dat"%(str(end)), sep="\t", header=None)
     x  = df.iloc[:,1]
     B  = x/180.0*np.pi
